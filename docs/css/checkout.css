@@ -1,0 +1,19 @@
+html {
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.yourOrderLabel {
+    font-weight: 400;
+}
+
+.submitOrderButton {
+    background-color: orange;
+    width: 100%;
+    border: 1px solid black;
+    bottom: 0px;
+}

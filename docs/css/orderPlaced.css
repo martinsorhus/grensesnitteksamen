@@ -1,0 +1,33 @@
+html {
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 200px;
+    align-items: center;
+}
+
+.orderedText {
+    font-size: x-large;
+    font-weight: 400;
+}
+
+.orderPlacedMessage {
+    font-size: x-large;
+}
+
+.closeBtnContainer {
+    border: 1px solid black;
+    border-radius: 12%;
+    text-align: center;
+    font-size: x-large;
+    width: 250px;
+    margin: 100px;
+}

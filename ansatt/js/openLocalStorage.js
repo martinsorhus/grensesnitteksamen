@@ -1,0 +1,5 @@
+(function startLocalStorageForEverything() {
+
+    const 
+
+})();

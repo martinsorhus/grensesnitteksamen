@@ -1,22 +1,65 @@
-const collappsable = document.getElementsByClassName("menuIcon")[0];
+// import { checkIfLoggedIn } from 'checkIfLoggedIn';
 
-const takeAway = document.getElementsByClassName("takeAwayButtonDiv")[0];
+let collappsable = document.querySelector(".menuIcon");
 
-const contentTable = document.getElementsByClassName("menuDropDown")[0];
+// const takeAway = document.querySelector(".takeAwayButtonDiv");
 
-const earlierOrdersBtn = document.createElement("P");
+const contentTable = document.querySelector(".menuDropDown");
 
-earlierOrdersBtn.innerHTML = "Tidligere Bestillinger";
-
-
+let menuButtonClicked = false;
 
 collappsable.addEventListener("click", () => {
-    alert("HEY");
+    if ( !menuButtonClicked ) {
+        contentTable.style.display = "block";
+        menuButtonClicked = true;
+    } else {
+        contentTable.style.display = "none";
+        menuButtonClicked = false;
+    }
+})
+
+
+
+
+/* collappsable.addEventListener("click", () => {
+    // menuButtonClicked = false ? openMenu() : closeMenu();
+    contentTable.style.transform = "translate(300px, 0px)";
+    contentTable.style.transition = "all 1s";
+}); 
+
+function openMenu() {
+    // Opprette liste og elementer
+    const listContainer = document.createElement("div");
+    listContainer.style.display = "flex";
+    const earlierOrdersBtn = document.createElement("P");
+    const earlierBtnText = document.createTextNode("Tidligere bestillinger");
+    earlierOrdersBtn.appendChild(earlierBtnText);
+    listContainer.appendChild(earlierOrdersBtn);
+    collappsable.appendChild(listContainer);
+}
+
+function closeMenu() {
+
+}
+/* if (contentTable.style.maxHeight == "0") {        
+    contentTable.style.maxHeight = "300px";
+    contentTable.style.height = "300px";
+    // contentTable.style.display = "block";
+    collappsable.innerHTML = "X";
+    // createMenuItems();
+}  else {
+        contentTable.style.height = "0";
+        collappsable.innerHTML = "=";
+} 
+
+collappsable.addEventListener("click", () => {
+    if (contentTable.style.maxHeight !== "0") {
+        contentTable.style.maxHeight = "0";
+        collappsable.innerHTML = "=";
+    }
 });
 
-
-(function () {
-    takeAway.appendChild(collappsable);
-
-    takeAway.style.backgroundColor = "blue";
-})();
+function createMenuItems () {
+    
+    
+} */

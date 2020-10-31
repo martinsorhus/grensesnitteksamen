@@ -65,7 +65,7 @@ submitBtn.addEventListener("click", () => {
 
         for(const kode of kodeListe) {
             if (kode.kode === inputCode.value) {
-                alert("riktig");
+                window.location='mainPage.html';
         } else {
             alert("feil");
         }

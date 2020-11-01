@@ -33,3 +33,18 @@ body {
     margin: 1px;
     height: 100%;
 }
+
+.itemContainer {
+    border: 1px solid black;
+    width: 50%; 
+    row-gap: 30px;
+}
+
+.beverageContainer {
+    
+}
+
+.beverageNameLabel, .dessertNameLabel {
+    font-weight: 300;
+    font-size: 1.5em;
+}

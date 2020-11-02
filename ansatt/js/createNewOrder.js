@@ -5,17 +5,36 @@ import { createOrderHistory } from './settingUpPreviousOrdersScreen.js';
 import { addOrder } from './addToCart.js';
 import { checkout } from './addToCart.js';
 
+// const newOrderButton = document.querySelector(".newOrderBtn");
+// newOrderButton.onclick = openTab(event, '.newOrderContainer');
 
+function openTab (evt, nameTab) {
 
-function resetState () {
+    let i, tabcontent, tablinks;
+
+    tabcontent = document.getElementsByClassName(".tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+
+    tablinks = document.getElementsByClassName(".tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    document.querySelector(nameTab).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  document.getElementById("defaultOpen").click();
+
+/* function resetState () {
 
     for ( let pButton in buttonsPressed ) {
         pButton = false;
     }
 
-}
-
-const newOrderBtn = document.querySelector(".newOrderBtn");
+} */
+/* const newOrderBtn = document.querySelector(".newOrderBtn");
 
 newOrderBtn.addEventListener("click", () => {
 
@@ -29,9 +48,9 @@ newOrderBtn.addEventListener("click", () => {
     }  else {
         return;
     }
-})
+}) */
 
-const previousOrdersBtn = document.querySelector(".previousOrderBtn");
+/* const previousOrdersBtn = document.querySelector(".previousOrderBtn");
 
 previousOrdersBtn.addEventListener("click", () => {
 
@@ -46,9 +65,10 @@ previousOrdersBtn.addEventListener("click", () => {
     }
 
 
-})
+}) 
+*/
 
-const checkOutBtn = document.querySelector(".checkOutBtn");
+/* const checkOutBtn = document.querySelector(".checkOutBtn");
 
 checkOutBtn.addEventListener("click", () => {
 
@@ -57,6 +77,8 @@ checkOutBtn.addEventListener("click", () => {
     buttonsPressed.checkOutButton = true;
     checkout();
 })
+
+ 
 
 
 function displayContentInMainBox () {
@@ -67,6 +89,7 @@ function displayContentInMainBox () {
         createOrderHistory();
     }
 }
+*/
 
 
 /* document.body.addEventListener("click", event => {
@@ -101,3 +124,5 @@ document.body.addEventListener("click", event => {
 
     }
 })
+
+

@@ -20,13 +20,12 @@
                   <h4>Totalpris</h4>
                   <h5 class="sum"></h5>
               </div>
-                <div class="order">
-                </div>
+                <div class="order"></div>
 
               </div>
-                <button type="button" class="sideBarBtn newOrderBtn">Ny bestilling</button>
-
-                <button type="button" class="sideBarBtn previousOrderBtn">Tidligere Bestillinger</button>
+                
+                <button type="button" class="tablinks sideBarBtn newOrderBtn" onclick="openTab(event, 'newOrderContainer')" id="defaultOpen">Ny bestilling</button>
+                <button type="button" class="tablinks sideBarBtn previousOrderBtn" onclick="openTab(event, 'earlierOrdersContainer')">Tidligere bestillinger</button>
 
                 <button type="button" class="sideBarBtn checkOutBtn">CheckOut</button>
 

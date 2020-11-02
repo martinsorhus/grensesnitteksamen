@@ -3,7 +3,7 @@ const orderHistoryContainer = document.createElement("div");
 
 orderHistoryContainer.className = "orderHistoryContainer";
 
-const mainPageContainer = document.querySelector(".mainBox");
+const mainPageContainer = document.querySelector(".earlierOrdersContainer");
 
 export function createOrderHistory () {
   const allPreviousOrders = JSON.parse(window.localStorage.getItem("orderHistory")) || [];

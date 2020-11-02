@@ -17,7 +17,7 @@ export function createOrderHistory () {
 
     for(const product of order){
       const productName = document.createElement("H3");
-      productName.innerHTML = product.type + product.name;
+      productName.innerHTML = product.type + " " + product.name;
       productName.className = "typeOfItem";
 
       const productPrice = document.createElement("Label");
@@ -25,7 +25,7 @@ export function createOrderHistory () {
       productPrice.className = "";
 
       const productCost = document.createElement("H4");
-      productCost.innerHTML = "Sum: " + product.cost;
+      productCost.innerHTML = "Sum: " + product.cost + "kr";
       productCost.className = "";
       orderContainer.appendChild(productName);
       orderContainer.appendChild(productPrice);
@@ -35,7 +35,7 @@ export function createOrderHistory () {
       totalCost += product.cost;
     }
     const totalCostLabel = document.createElement("H2");
-    totalCostLabel.innerHTML = "Total: " + totalCost;
+    totalCostLabel.innerHTML = "Total: " + totalCost + "kr";
     totalCostLabel.className = "";
     orderContainer.appendChild(totalCostLabel);
 

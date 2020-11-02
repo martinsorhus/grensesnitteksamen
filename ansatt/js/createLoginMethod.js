@@ -48,15 +48,15 @@ submitBtn.addEventListener("click", () => {
                 hasErrorMessageShown = true;
 
             }
-            
+
         } else {
-    
+
             const validLogins = JSON.parse(window.localStorage.getItem("GyldigeInnlogginger")) || [];
-    
+
             validLogins.push({name: inputFieldName.value, kode: inputCode.value});
-    
+
             window.localStorage.setItem("GyldigeInnlogginger", JSON.stringify(validLogins));
-    
+
             event.target.reset();
         }
     } else {
@@ -65,15 +65,9 @@ submitBtn.addEventListener("click", () => {
 
         for(const kode of kodeListe) {
             if (kode.kode === inputCode.value) {
-                window.location='mainPage.html';
-        } else {
-            alert("feil");
+              window.location='mainPage.html';
+            }
         }
-        
-
-        }
-
     }
-
 
 })

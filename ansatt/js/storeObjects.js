@@ -1,30 +1,30 @@
 export const desserts = [
     {
-        type: "brownie",
+        type: "Brownie",
         price: 44
     },
     {
-        type: "oreokake",
+        type: "Oreokake",
         price: 54
     },
     {
-        type: "kanelbolle",
-        price: 46 
+        type: "Kanelbolle",
+        price: 46
     },
     {
-        type: "croissant",
+        type: "Croissant",
         price: 38
     },
     {
-        type: "chiapudding",
+        type: "Chiapudding",
         price: 42
     },
     {
-        type: "brioche",
+        type: "Brioche",
         price: 44
     },
     {
-        type: "scone",
+        type: "Scone",
         price: 37
     }
 
@@ -32,61 +32,61 @@ export const desserts = [
 
 export const beverages = [
     {
-        type: "filterkaffe",
+        type: "Filterkaffe",
         big_price: 36,
         medium_price: 32,
-        small_price: 28 
+        small_price: 28
     },
     {
-        type: "cappuchino",
+        type: "Cappuchino",
         big_price: 46,
         medium_price: 42,
         small_price: 38
     },
     {
-        type: "americano",
+        type: "Americano",
         big_price: 40,
         medium_price: 36,
         small_price: 32
     },
     {
-        type: "iskaffe",
+        type: "Iskaffe",
         big_price: 50,
         medium_price: 42,
         small_price: 36
     },
     {
-        type: "caffe mocca",
+        type: "Caffe mocca",
         big_price: 46,
         medium_price: 42,
         small_price: 38
     },
     {
-        type: "caffe latte",
+        type: "Caffe latte",
         big_price: 48,
         medium_price: 44,
         small_price: 38
     },
     {
-        type: "caramel macchiato",
+        type: "Caramel macchiato",
         big_price: 51,
         medium_price: 48,
         small_price: 45
     },
     {
-        type: "espresso",
+        type: "Espresso",
         big_price: 42,
         medium_price: 38,
         small_price: 34
     },
     {
-        type: "cortado",
+        type: "Cortado",
         big_price: 44,
         medium_price: 40,
         small_price: 36
     },
     {
-        type: "iste",
+        type: "Iste",
         big_price: 55,
         medium_price: 47,
         small_price: 38

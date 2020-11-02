@@ -1,8 +1,8 @@
 import { beverages, desserts } from './storeObjects.js';
 import buttonsPressed from './buttonsPressedState.js';
 import { settingUpNewOrderScreen } from './setUpNewOrderScreen.js';
-
-
+import { addOrder } from './addToCart.js';
+import { checkout } from './addToCart.js';
 
 
 
@@ -12,7 +12,7 @@ function resetState () {
         pButton = false;
     }
 
-} 
+}
 
 const newOrderBtn = document.querySelector(".newOrderBtn");
 
@@ -21,7 +21,7 @@ newOrderBtn.addEventListener("click", () => {
     if ( !buttonsPressed.newOrderButton ) {
 
         resetState();
-    
+
         buttonsPressed.newOrderButton = true;
 
         displayContentInMainBox();
@@ -47,10 +47,11 @@ previousOrdersBtn.addEventListener("click", () => {
 const checkOutBtn = document.querySelector(".checkOutBtn");
 
 checkOutBtn.addEventListener("click", () => {
-    
+
     resetState();
 
     buttonsPressed.checkOutButton = true;
+    checkout();
 })
 
 
@@ -59,7 +60,7 @@ function displayContentInMainBox () {
     if ( buttonsPressed.newOrderButton ) {
         settingUpNewOrderScreen();
     } else if ( buttonsPressed.previousOrdersButton ) {
-    
+
     }
 }
 
@@ -70,7 +71,7 @@ let order = JSON.parse(window.localStorage.getItem("ActiveOrder")) || [];
         let typeOfItemPurchased = event.target.textContent;
         console.log(typeOfItemPurchased)
     }
-}) */ 
+}) */
 
 
 document.body.addEventListener("click", event => {
@@ -78,31 +79,12 @@ document.body.addEventListener("click", event => {
 
         let priceButtonPressed = event.target.textContent;
 
-        let parentElement = event.target.parentElement.textContent;
+        let parentElement = event.target.parentElement.id;
 
-        let nameOfProduct;
+        let typeOfProduct = event.target.value.toString();
 
-        let searchForDigits = /\d+/;
+        let searchForDigits = priceButtonPressed.replace(/\D/g, '');
 
-        for (let i=0; i < parentElement.length; i++) {
-            while ( i !== searchForDigits ) {
-                nameOfProduct += i;
-            }
-        }
-
-        console.log(priceButtonPressed);
-        console.log(nameOfProduct);
-        
+        addOrder(typeOfProduct, parentElement, searchForDigits)
     }
 })
-
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,9 @@
 import { beverages, desserts } from './storeObjects.js';
 
 const mainOrderContainer = document.querySelector(".order");
+const totalPriceLabel = document.querySelector(".sum");
+
+
 
 export function addOrder(type, name, price){
   //EKS (Small, Filterkaffe, 28)
@@ -53,6 +56,20 @@ export function addOrder(type, name, price){
     // og bruker stepUp/Down funksjonen til number inputs for å justere menge
     orderAddBtn.addEventListener("click", event => {
         event.target.parentNode.querySelector('input[type=number]').stepUp();
+        let fullTextContents = event.target.parentNode.parentNode.textContent.match(/(\d+)/);
+
+        if (fullTextContents) {
+          let extractedPrice = fullTextContents[0];
+
+          let convertedTotalPrice = Number(totalPriceLabel.innerHTML);
+
+          convertedTotalPrice += parseInt(extractedPrice);
+
+          totalPriceLabel.innerHTML = convertedTotalPrice;
+        }
+
+
+        
     }, false);
 
     orderSubtractBtn.addEventListener("click", event => {
@@ -66,6 +83,18 @@ export function addOrder(type, name, price){
           }else {
             event.target.parentNode.querySelector('input[type=number]').value = 1;
           }
+        }
+
+        let fullTextContents = event.target.parentNode.parentNode.textContent.match(/(\d+)/);
+
+        if (fullTextContents) {
+          let extractedPrice = fullTextContents[0];
+
+          let convertedTotalPrice = Number(totalPriceLabel.innerHTML);
+
+          convertedTotalPrice -= parseInt(extractedPrice);
+
+          totalPriceLabel.innerHTML = convertedTotalPrice;
         }
     }, false);
 
@@ -81,7 +110,7 @@ export function addOrder(type, name, price){
 
 export function checkout() {
 
-  var orderObj = [];
+  let orderObj = [];
 
   let totalOrder = document.getElementsByClassName("productContainer");
 

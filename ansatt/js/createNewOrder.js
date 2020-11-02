@@ -76,6 +76,8 @@ function displayContentInMainBox () {
     }
 }) */
 
+const totalPriceLabel = document.querySelector(".sum");
+
 
 document.body.addEventListener("click", event => {
     if (event.target.matches('.addBtn')) {
@@ -88,6 +90,14 @@ document.body.addEventListener("click", event => {
 
         let searchForDigits = priceButtonPressed.replace(/\D/g, '');
 
-        addOrder(typeOfProduct, parentElement, searchForDigits)
+        addOrder(typeOfProduct, parentElement, searchForDigits);
+
+        let convertedTotalPrice = Number(totalPriceLabel.innerHTML); 
+        
+        convertedTotalPrice += parseInt(searchForDigits);
+
+        totalPriceLabel.innerHTML = convertedTotalPrice;
+
+
     }
 })

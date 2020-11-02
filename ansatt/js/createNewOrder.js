@@ -1,6 +1,7 @@
 import { beverages, desserts } from './storeObjects.js';
 import buttonsPressed from './buttonsPressedState.js';
 import { settingUpNewOrderScreen } from './setUpNewOrderScreen.js';
+import { createOrderHistory } from './settingUpPreviousOrdersScreen.js';
 import { addOrder } from './addToCart.js';
 import { checkout } from './addToCart.js';
 
@@ -39,6 +40,9 @@ previousOrdersBtn.addEventListener("click", () => {
         resetState();
 
         buttonsPressed.previousOrdersButton = true;
+        displayContentInMainBox();
+    } else {
+      return;
     }
 
 
@@ -60,7 +64,7 @@ function displayContentInMainBox () {
     if ( buttonsPressed.newOrderButton ) {
         settingUpNewOrderScreen();
     } else if ( buttonsPressed.previousOrdersButton ) {
-
+        createOrderHistory();
     }
 }
 

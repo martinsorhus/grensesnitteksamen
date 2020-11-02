@@ -1,4 +1,3 @@
-// export { checkIfLoggedIn };
 
 (function settingUpLocalStorage () {
 
@@ -8,12 +7,7 @@
 
 })();
 
-function checkLoggedIn () {
-    let isLoggedIn = JSON.parse(window.localStorage.getItem("isLoggedIn"));
-    alert(isLoggedIn);
-}
 
-// window.onload = settingUpLocalStorage;
 
 
 function changeValueLoggedIn () {
@@ -22,4 +16,12 @@ function changeValueLoggedIn () {
     window.localStorage.setItem("isLoggedIn", JSON.stringify(true));
 }
 
-checkIfLoggedIn();
+
+
+
+
+// DENNE MÅ FLYTTES
+function checkLoggedIn () {
+    let isLoggedIn = JSON.parse(window.localStorage.getItem("isLoggedIn"));
+    alert(isLoggedIn);
+}

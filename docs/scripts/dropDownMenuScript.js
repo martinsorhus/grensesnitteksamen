@@ -2,8 +2,6 @@
 
 let collappsable = document.querySelector(".menuIcon");
 
-// const takeAway = document.querySelector(".takeAwayButtonDiv");
-
 const contentTable = document.querySelector(".menuDropDown");
 
 let menuButtonClicked = false;

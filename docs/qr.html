@@ -5,16 +5,13 @@
         <link rel="stylesheet" href="css/qr.css">
         
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
-        <script src="scripts/checkIfLoggedIn.js"></script>
     </head>
     <body>
         <div class="menuIcon">=
             <div class="menuDropDown">
-                <a class="" href="/docs/earlierOrders.html">
-                    <button type="button" class="earlierOrdersBtn btn">
-                        Tidligere Bestillinger
+                    <button type="button" class="earlierOrdersBtn btn" onclick="window.location='previousOrders.html';">
+                        Dine Tidligere Bestillinger
                     </button>
-                </a>
             </div>
         </div>
         
@@ -25,13 +22,13 @@
             <h3 class="descriptionQrButton descriptions">Bestill med QR-<br>koden på bordet</h3>
 
             <a href="#">
-                    <button type="button" class="qrButton">QR</button>
+                    <button type="button" class="qrButton" onclick="window.location='newOrder.html';">QR</button>
             </a>
 
             <h3 class="descriptionTakeAwayButton descriptions">eller</h3>
 
             <a href="#">
-                    <button type="button" class="takeAwayButton">takeaway</button>
+                    <button type="button" class="takeAwayButton" onclick="window.location='newOrder.html';">takeaway</button>
             </a>
 
 
@@ -40,5 +37,5 @@
 
     </body>
     <script src="scripts/dropDownMenuScript.js"></script>
-    <script src="scripts/checkIfLoggedIn.js"></script>
+    
 </html>

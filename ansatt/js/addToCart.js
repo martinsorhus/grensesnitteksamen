@@ -80,7 +80,9 @@ export function addOrder(type, name, price){
 }
 
 export function checkout() {
-  //var orderObj = [];
+
+  var orderObj = [];
+
   let totalOrder = document.getElementsByClassName("productContainer");
 
   const allPreviousOrders = JSON.parse(window.localStorage.getItem("orderHistory")) || [];
@@ -105,7 +107,8 @@ export function checkout() {
     product.amount = orderDetails.querySelector('input[type=number]').value;
     product.cost = product.price * product.amount;
 
-    allPreviousOrders.push(product);
+    orderObj.push(product);
   }
+  allPreviousOrders.push(orderObj);
   window.localStorage.setItem("orderHistory", JSON.stringify(allPreviousOrders));
 }

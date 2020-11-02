@@ -11,7 +11,7 @@ const totalPriceLabel = document.querySelector(".sum");
 const checkOutBtn = document.querySelector(".checkOutBtn");
 
 $(tabs[0]).click(function(){
-  $(".mainBox div").empty();
+  $(".mainBox").empty();
   settingUpNewOrderScreen();
 });
 

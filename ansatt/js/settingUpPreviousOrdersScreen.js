@@ -16,27 +16,37 @@ export function createOrderHistory () {
     orderContainer.id = "";
 
     for(const product of order){
+      const productContainer = document.createElement("div");
+      productContainer.className = "";
+
+      const productDetailsContainer = document.createElement("div");
+      productDetailsContainer.className = "productDetailsContainer";
+
       const productName = document.createElement("H3");
       productName.innerHTML = product.type + " " + product.name;
       productName.className = "typeOfItem";
 
       const productPrice = document.createElement("Label");
-      productPrice.innerHTML = product.price+"kr x " + product.amount;
+      productPrice.innerHTML = "(" + product.price+"kr x " + product.amount + ")";
       productPrice.className = "";
 
       const productCost = document.createElement("H4");
-      productCost.innerHTML = "Sum: " + product.cost + "kr";
+      productCost.innerHTML = product.cost + "kr";
       productCost.className = "";
-      orderContainer.appendChild(productName);
-      orderContainer.appendChild(productPrice);
-      orderContainer.appendChild(productCost);
+
+      productDetailsContainer.appendChild(productPrice);
+      productDetailsContainer.appendChild(productCost);
+
+      productContainer.appendChild(productName);
+      productContainer.appendChild(productDetailsContainer);
+      orderContainer.appendChild(productContainer);
 
       orderHistoryContainer.appendChild(orderContainer);
       totalCost += product.cost;
     }
     const totalCostLabel = document.createElement("H2");
     totalCostLabel.innerHTML = "Total: " + totalCost + "kr";
-    totalCostLabel.className = "";
+    totalCostLabel.className = "orderTotal";
     orderContainer.appendChild(totalCostLabel);
 
     mainPageContainer.appendChild(orderHistoryContainer);

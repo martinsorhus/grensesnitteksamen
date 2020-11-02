@@ -64,7 +64,6 @@ function displayContentInMainBox () {
     }
 }
 
-let order = JSON.parse(window.localStorage.getItem("ActiveOrder")) || [];
 
 /* document.body.addEventListener("click", event => {
     if(event.target.closest('.typeOfItem')) {

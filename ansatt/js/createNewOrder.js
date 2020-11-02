@@ -5,101 +5,25 @@ import { createOrderHistory } from './settingUpPreviousOrdersScreen.js';
 import { addOrder } from './addToCart.js';
 import { checkout } from './addToCart.js';
 
-// const newOrderButton = document.querySelector(".newOrderBtn");
-// newOrderButton.onclick = openTab(event, '.newOrderContainer');
-
-function openTab (evt, nameTab) {
-
-    let i, tabcontent, tablinks;
-
-    tabcontent = document.getElementsByClassName(".tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-
-    tablinks = document.getElementsByClassName(".tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    document.querySelector(nameTab).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
-  document.getElementById("defaultOpen").click();
-
-/* function resetState () {
-
-    for ( let pButton in buttonsPressed ) {
-        pButton = false;
-    }
-
-} */
-/* const newOrderBtn = document.querySelector(".newOrderBtn");
-
-newOrderBtn.addEventListener("click", () => {
-
-    if ( !buttonsPressed.newOrderButton ) {
-
-        resetState();
-
-        buttonsPressed.newOrderButton = true;
-
-        displayContentInMainBox();
-    }  else {
-        return;
-    }
-}) */
-
-/* const previousOrdersBtn = document.querySelector(".previousOrderBtn");
-
-previousOrdersBtn.addEventListener("click", () => {
-
-    if ( !buttonsPressed.previousOrdersButton ) {
-
-        resetState();
-
-        buttonsPressed.previousOrdersButton = true;
-        displayContentInMainBox();
-    } else {
-      return;
-    }
-
-
-}) 
-*/
-
-/* const checkOutBtn = document.querySelector(".checkOutBtn");
-
-checkOutBtn.addEventListener("click", () => {
-
-    resetState();
-
-    buttonsPressed.checkOutButton = true;
-    checkout();
-})
-
- 
-
-
-function displayContentInMainBox () {
-
-    if ( buttonsPressed.newOrderButton ) {
-        settingUpNewOrderScreen();
-    } else if ( buttonsPressed.previousOrdersButton ) {
-        createOrderHistory();
-    }
-}
-*/
-
-
-/* document.body.addEventListener("click", event => {
-    if(event.target.closest('.typeOfItem')) {
-        let typeOfItemPurchased = event.target.textContent;
-        console.log(typeOfItemPurchased)
-    }
-}) */
-
+const mainPageContainer = document.querySelector(".mainBox");
+const tabs = document.getElementsByClassName("tablinks");
 const totalPriceLabel = document.querySelector(".sum");
+const checkOutBtn = document.querySelector(".checkOutBtn");
+
+$(tabs[0]).click(function(){
+  $(".mainBox div").empty();
+  settingUpNewOrderScreen();
+});
+
+$(tabs[1]).click(function(){
+  $(".mainBox div").empty();
+  createOrderHistory();
+});
+$(checkOutBtn).click(function(){
+  checkout();
+  $(".order div").empty();
+  totalPriceLabel.innerHTML = "0kr";
+});
 
 
 document.body.addEventListener("click", event => {
@@ -115,14 +39,11 @@ document.body.addEventListener("click", event => {
 
         addOrder(typeOfProduct, parentElement, searchForDigits);
 
-        let convertedTotalPrice = Number(totalPriceLabel.innerHTML); 
-        
+        let convertedTotalPrice = Number(totalPriceLabel.innerHTML.replace(/\D/g, ''));
+
         convertedTotalPrice += parseInt(searchForDigits);
 
-        totalPriceLabel.innerHTML = convertedTotalPrice;
-
+        totalPriceLabel.innerHTML = convertedTotalPrice + "kr";
 
     }
 })
-
-

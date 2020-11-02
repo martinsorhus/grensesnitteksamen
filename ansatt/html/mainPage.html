@@ -18,27 +18,23 @@
               <h3>Bestilling</h3>
               <div class="totalPriceContainer">
                   <h4>Totalpris</h4>
-                  <h5 class="sum"></h5>
+                  <h5 class="sum">0kr</h5>
               </div>
                 <div class="order"></div>
 
               </div>
-                
-                <button type="button" class="tablinks sideBarBtn newOrderBtn" onclick="openTab(event, 'newOrderContainer')" id="defaultOpen">Ny bestilling</button>
-                <button type="button" class="tablinks sideBarBtn previousOrderBtn" onclick="openTab(event, 'earlierOrdersContainer')">Tidligere bestillinger</button>
+
+                <button type="button" id="defaultOpen" class="tablinks sideBarBtn newOrderBtn">Ny bestilling</button>
+                <button type="button" class="tablinks sideBarBtn previousOrderBtn">Tidligere bestillinger</button>
 
                 <button type="button" class="sideBarBtn checkOutBtn">CheckOut</button>
 
             </div>
 
-            <div class="mainBox newOrderContainer tabcontent"></div>
-
-            <div class="earlierOrdersContainer tabcontent"></div>
-
-
+            <div class="mainBox"></div>
         </div>
 
     </body>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src="../js/createNewOrder.js"></script>
 </html>

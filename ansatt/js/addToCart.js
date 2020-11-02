@@ -1,9 +1,6 @@
 import { beverages, desserts } from './storeObjects.js';
 
 const mainOrderContainer = document.querySelector(".order");
-const totalPriceLabel = document.querySelector(".sum");
-
-
 
 export function addOrder(type, name, price){
   //EKS (Small, Filterkaffe, 28)
@@ -56,20 +53,6 @@ export function addOrder(type, name, price){
     // og bruker stepUp/Down funksjonen til number inputs for å justere menge
     orderAddBtn.addEventListener("click", event => {
         event.target.parentNode.querySelector('input[type=number]').stepUp();
-        let fullTextContents = event.target.parentNode.parentNode.textContent.match(/(\d+)/);
-
-        if (fullTextContents) {
-          let extractedPrice = fullTextContents[0];
-
-          let convertedTotalPrice = Number(totalPriceLabel.innerHTML);
-
-          convertedTotalPrice += parseInt(extractedPrice);
-
-          totalPriceLabel.innerHTML = convertedTotalPrice;
-        }
-
-
-        
     }, false);
 
     orderSubtractBtn.addEventListener("click", event => {
@@ -84,18 +67,6 @@ export function addOrder(type, name, price){
             event.target.parentNode.querySelector('input[type=number]').value = 1;
           }
         }
-
-        let fullTextContents = event.target.parentNode.parentNode.textContent.match(/(\d+)/);
-
-        if (fullTextContents) {
-          let extractedPrice = fullTextContents[0];
-
-          let convertedTotalPrice = Number(totalPriceLabel.innerHTML);
-
-          convertedTotalPrice -= parseInt(extractedPrice);
-
-          totalPriceLabel.innerHTML = convertedTotalPrice;
-        }
     }, false);
 
   //Dersom produktet finnes skal vi heller finne dette, og øke det spesifike produktet sin input med "1" med bruk av step funksjonen.
@@ -109,11 +80,8 @@ export function addOrder(type, name, price){
 }
 
 export function checkout() {
-
   let orderObj = [];
-
   let totalOrder = document.getElementsByClassName("productContainer");
-
   const allPreviousOrders = JSON.parse(window.localStorage.getItem("orderHistory")) || [];
 
   for(const order of totalOrder){
@@ -140,4 +108,5 @@ export function checkout() {
   }
   allPreviousOrders.push(orderObj);
   window.localStorage.setItem("orderHistory", JSON.stringify(allPreviousOrders));
+  //window.localStorage.clear();
 }

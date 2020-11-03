@@ -46,7 +46,7 @@ if(mainPageContainer != null) {
 			$("#drikkeContainer").css("display", "none");
 		}
 	});
-	$(tabs[2]).click(function() {
+  $(tabs[2]).click(function() {
 
 		if($("#orderContainer").css("display") == "none") {
 			openPage("orderContainer");

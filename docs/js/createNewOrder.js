@@ -9,6 +9,7 @@ const totalPriceLabel = document.querySelector(".sum");
 const checkOutBtn = document.querySelector(".checkOutBtn");
 if(mainPageContainer != null) {
 	const tabs = document.getElementsByClassName("tablinks");
+$(document).ready(function() {
 	$(tabs[0]).click(function() {
 		$(".mainBox div").empty();
 		$(".mainBox").empty();
@@ -24,6 +25,7 @@ if(mainPageContainer != null) {
 		$(".order").empty();
 		totalPriceLabel.innerHTML = "0kr";
 	});
+})
 } else {
 	const tabs = document.getElementsByClassName("tablinks");
 	$(tabs[0]).click(function() {
@@ -32,6 +34,7 @@ if(mainPageContainer != null) {
 		if($("#dessertContainer").css("display") == "none") {
 			openPage("dessertContainer");
 			settingUpNewOrderScreen("desserts");
+			document.getElementById("dessertContainer").scrollIntoView({ behavior: 'smooth', block: 'start'});
 		} else {
 			$("#dessertContainer").css("display", "none");
 		}
@@ -42,12 +45,13 @@ if(mainPageContainer != null) {
 		if($("#drikkeContainer").css("display") == "none") {
 			openPage("drikkeContainer");
 			settingUpNewOrderScreen("drinks");
+			document.getElementById("drikkeContainer").scrollIntoView({ behavior: 'auto', block: 'start'});
+
 		} else {
 			$("#drikkeContainer").css("display", "none");
 		}
 	});
   $(tabs[2]).click(function() {
-
 		if($("#orderContainer").css("display") == "none") {
 			openPage("orderContainer");
 		} else {

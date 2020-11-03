@@ -13,7 +13,7 @@ export function addOrder(type, name, price){
   //Her blir id satt til containeren til hver unike ordre.
   if (orderId == null){
     const orderContainer = document.createElement("div");
-    orderContainer.className = "productContainer";
+    orderContainer.className = "orderProductContainer";
     orderContainer.id = "order"+type+r;
 
     const orderName = document.createElement("H3");
@@ -81,7 +81,7 @@ export function addOrder(type, name, price){
 
 export function checkout() {
   let orderObj = [];
-  let totalOrder = document.getElementsByClassName("productContainer");
+  let totalOrder = document.getElementsByClassName("orderProductContainer");
   const allPreviousOrders = JSON.parse(window.localStorage.getItem("orderHistory")) || [];
 
   for(const order of totalOrder){
@@ -98,7 +98,7 @@ export function checkout() {
 
     product.name = productName.split(" ")[1];
     product.type = productName.split(" ")[0];
-
+    console.log(order);
     var r = order.querySelector('label').innerHTML;
     product.price = r.replace(/\D/g, '');
     product.amount = orderDetails.querySelector('input[type=number]').value;
@@ -108,5 +108,4 @@ export function checkout() {
   }
   allPreviousOrders.push(orderObj);
   window.localStorage.setItem("orderHistory", JSON.stringify(allPreviousOrders));
-  //window.localStorage.clear();
 }

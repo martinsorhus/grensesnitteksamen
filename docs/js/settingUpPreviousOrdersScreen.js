@@ -1,6 +1,6 @@
 const orderHistoryContainer = document.createElement("div");
 
-orderHistoryContainer.className = "orderHistoryContainer";
+orderHistoryContainer.id = "orderHistoryContainer";
 
 const mainPageContainer = document.querySelector(".mainBox");
 
@@ -13,7 +13,6 @@ export function createOrderHistory () {
     const orderContainer = document.createElement("div");
     let totalCost = 0;
     orderContainer.className = "orderContainer";
-    orderContainer.id = "";
 
     for(const product of order){
       const productContainer = document.createElement("div");

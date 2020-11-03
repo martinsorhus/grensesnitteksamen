@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="header">
+      <h1 for="">Ny bestilling</h1>
+    </div>
+    <div id="orderContainer" class="currentOrderContainer tabcontent">
+
+      <h3>Bestilling</h3>
+      <div class="totalPriceContainer">
+          <h4>Totalpris</h4>
+          <h5 class="sum">0kr</h5>
+      </div>
+      <div class="order"></div>
+    </div>
+
+    <div class="container">
+        <button type="button" class="tablinks indexButton">Dessert</button>
+        <div id="dessertContainer" class="tabcontent"></div>
+
+        <button type="button" class="tablinks indexButton">Drikke</button>
+        <div id="drikkeContainer" class="tabcontent"></div>
+
+      <div class="buttonContainer">
+      </div>
+
+      <div class="bottomNavContainer">
+        <button type="button" class="tablinks bottomNavButton">Din bestilling</button>
+      </div>
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="module" src="../js/createNewOrder.js"></script>
+</html>

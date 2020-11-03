@@ -1,3 +1,0 @@
-
-
-// Brukes f.eks slik:

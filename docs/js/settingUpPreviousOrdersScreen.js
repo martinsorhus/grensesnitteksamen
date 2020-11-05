@@ -2,12 +2,15 @@ const orderHistoryContainer = document.createElement("div");
 
 orderHistoryContainer.id = "orderHistoryContainer";
 
-const mainPageContainer = document.querySelector(".mainBox");
+var mainPageContainer = document.querySelector(".mainBox");
 
 export function createOrderHistory () {
 
   const allPreviousOrders = JSON.parse(window.localStorage.getItem("orderHistory")) || [];
-  mainPageContainer.innerHTML = "";
+
+  if(mainPageContainer != null){
+    mainPageContainer.innerHTML = "";
+  }
 
   for(const order of allPreviousOrders){
     const orderContainer = document.createElement("div");
@@ -47,7 +50,11 @@ export function createOrderHistory () {
     totalCostLabel.innerHTML = "Total: " + totalCost + "kr";
     totalCostLabel.className = "orderTotal";
     orderContainer.appendChild(totalCostLabel);
-
+    if(mainPageContainer == null) {
+      let previousOrderContainer = document.getElementById("previousOrderContainer");
+      previousOrderContainer.appendChild(orderHistoryContainer);
+    } else {
     mainPageContainer.appendChild(orderHistoryContainer);
+  }
   }
 }

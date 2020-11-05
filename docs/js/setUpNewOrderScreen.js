@@ -11,6 +11,9 @@ function creatingDrinkMenu (container) {
         beverageProductContainer.className = "productContainer";
         beverageProductContainer.id = beverage.type;
 
+        const productDetailsContainer = document.createElement("div");
+        productDetailsContainer.className = "productDetailsContainer";
+
         const beverageName = document.createElement("H3");
         beverageName.innerHTML = beverage.type;
         beverageName.className = "beverageNameLabel typeOfItem";
@@ -24,6 +27,15 @@ function creatingDrinkMenu (container) {
         const beverageBigPriceBtn = document.createElement("button");
         beverageBigPriceBtn.className = "beverageButton addBtn";
 
+        const beverageSmallLabel = document.createElement("label");
+        beverageSmallLabel.innerText = "Small"
+
+        const beverageMediumLabel = document.createElement("label");
+        beverageMediumLabel.innerText = "Medium"
+
+        const beverageBigLabel = document.createElement("label");
+        beverageBigLabel.innerText = "Big"
+
         beverageSmallPriceBtn.innerText = beverage.small_price + 'kr';
         beverageMediumPriceBtn.innerText = beverage.medium_price + 'kr';
         beverageBigPriceBtn.innerText = beverage.big_price + 'kr';
@@ -33,10 +45,16 @@ function creatingDrinkMenu (container) {
         beverageBigPriceBtn.value = "Big";
 
         beverageProductContainer.appendChild(beverageName);
-        beverageProductContainer.appendChild(beverageSmallPriceBtn);
-        beverageProductContainer.appendChild(beverageMediumPriceBtn);
-        beverageProductContainer.appendChild(beverageBigPriceBtn);
 
+        productDetailsContainer.appendChild(beverageSmallLabel);
+        productDetailsContainer.appendChild(beverageMediumLabel);
+        productDetailsContainer.appendChild(beverageBigLabel);
+
+        productDetailsContainer.appendChild(beverageSmallPriceBtn);
+        productDetailsContainer.appendChild(beverageMediumPriceBtn);
+        productDetailsContainer.appendChild(beverageBigPriceBtn);
+
+        beverageProductContainer.appendChild(productDetailsContainer);
         drinkContainer.appendChild(beverageProductContainer);
     }
     if(container != drinkContainer){
@@ -50,6 +68,9 @@ function creatingDessertMenu (container) {
         dessertProductContainer.className = "productContainer";
         dessertProductContainer.id = dessert.type;
 
+        const productDetailsContainer = document.createElement("div");
+        productDetailsContainer.className = "productDetailsContainer";
+
         const dessertName = document.createElement("H3");
         dessertName.innerHTML = dessert.type;
         dessertName.className = "dessertNameLabel typeOfItem";
@@ -61,7 +82,8 @@ function creatingDessertMenu (container) {
         dessertPurchaseButtonContainer.innerText = dessert.price + 'kr';
 
         dessertProductContainer.appendChild(dessertName);
-        dessertProductContainer.appendChild(dessertPurchaseButtonContainer);
+        productDetailsContainer.appendChild(dessertPurchaseButtonContainer);
+        dessertProductContainer.appendChild(productDetailsContainer);
 
         dessertContainer.appendChild(dessertProductContainer);
     }

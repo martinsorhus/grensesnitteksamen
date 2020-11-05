@@ -45,6 +45,16 @@ input[type=number]::-webkit-outer-spin-button {
   width: 100%;
   height: 100vh;
 }
+.productDetailsContainer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.productDetailsContainer label {
+  flex: 1 1 7vw;
+  text-align: center;
+}
 .orderDetailsContainer {
     display: flex;
     justify-content: flex-end;
@@ -63,11 +73,11 @@ input[type=number]::-webkit-outer-spin-button {
 .productDetailsContainer {
   display: flex;
   justify-content: space-between;
+  width: 25vw;
 }
 .addBtn{
     box-shadow: 0px 5px 10px -6px rgba(69,136,125,1);
     padding: 5px 10px 5px 10px;
-    margin: auto 5px;
     font-size: 1.5em;
     border-radius: 10px;
 }

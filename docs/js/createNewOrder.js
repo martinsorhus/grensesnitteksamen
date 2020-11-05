@@ -9,7 +9,7 @@ const totalPriceLabel = document.querySelector(".sum");
 const checkOutBtn = document.querySelector(".checkOutBtn");
 if(mainPageContainer != null) {
 	const tabs = document.getElementsByClassName("tablinks");
-$(document).ready(function() {
+
 	$(tabs[0]).click(function() {
 		$(".mainBox div").empty();
 		$(".mainBox").empty();
@@ -25,10 +25,13 @@ $(document).ready(function() {
 		$(".order").empty();
 		totalPriceLabel.innerHTML = "0kr";
 	});
-})
+
 } else {
-	const tabs = document.getElementsByClassName("tablinks");
-	$(tabs[0]).click(function() {
+	var tabs = document.querySelectorAll("#dessertButton, #beverageButton, #currentOrderButton, #previousOrderButton");
+	var r = null;
+
+	r = $.grep(tabs, function(e){ return e.id == "dessertButton"; });
+	$(r).click(function() {
 		$("#dessertContainer div").empty();
 		$("#dessertContainer").empty();
 		if($("#dessertContainer").css("display") == "none") {
@@ -39,7 +42,9 @@ $(document).ready(function() {
 			$("#dessertContainer").css("display", "none");
 		}
 	});
-	$(tabs[1]).click(function() {
+
+	r = $.grep(tabs, function(e){ return e.id == "beverageButton"; });
+	$(r).click(function() {
 		$("#drikkeContainer div").empty();
 		$("#drikkeContainer").empty();
 		if($("#drikkeContainer").css("display") == "none") {
@@ -51,13 +56,41 @@ $(document).ready(function() {
 			$("#drikkeContainer").css("display", "none");
 		}
 	});
-  $(tabs[2]).click(function() {
-		if($("#orderContainer").css("display") == "none") {
-			openPage("orderContainer");
+
+	r = $.grep(tabs, function(e){ return e.id == "currentOrderButton"; });
+	$(r).click(function() {
+		if($("#currentOrderContainer").css("display") == "none" & $("#previousOrderContainer").css("display") == "none") {
+			openPage("currentOrderContainer");
+
+			$('#currentOrderButton').text("Tilbake");
+
+			$('#previousOrderButton').text("Checkout");
+			$('#previousOrderButton').addClass("checkOutBtn");
 		} else {
-			$("#orderContainer").css("display", "none");
+			$('#currentOrderButton').text("Din bestilling");
+			$('#previousOrderButton').text("Tidligere bestillinger");
+
+			$("#currentOrderContainer").css("display", "none");
+			$("#previousOrderContainer").css("display", "none");
 		}
 	});
+
+	r = $.grep(tabs, function(e){ return e.id == "previousOrderButton"; });
+	$(r).click(function() {
+		if($("#previousOrderContainer").css("display") == "none" & $("#currentOrderContainer").css("display") == "none") {
+			openPage("previousOrderContainer");
+			$('#currentOrderButton').text("Tilbake");
+			$('#previousOrderButton').text("Slett historikk");
+
+			createOrderHistory();
+		} else {
+			checkout();
+			$(".order").empty();
+			$("#previousOrderContainer").css("display", "none");
+			$('.bottomNavButton').text("Din bestilling");
+		}
+	});
+
 
 	function openPage(pageName) {
 		// Hide all elements with class="tabcontent" by default */
@@ -67,12 +100,13 @@ $(document).ready(function() {
 			tabcontent[i].style.display = "none";
 		}
 		document.getElementById(pageName).style.display = "flex";
+
 	}
 }
 document.body.addEventListener("click", event => {
 	if(event.target.matches('.addBtn')) {
 		let priceButtonPressed = event.target.textContent;
-		let parentElement = event.target.parentElement.id;
+		let parentElement = event.target.parentElement.parentElement.id;
 		let typeOfProduct = event.target.value.toString();
 		let searchForDigits = priceButtonPressed.replace(/\D/g, '');
 		addOrder(typeOfProduct, parentElement, searchForDigits);

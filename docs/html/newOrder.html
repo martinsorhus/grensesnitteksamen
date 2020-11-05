@@ -10,8 +10,7 @@
     <div class="header">
       <h1 for="">Ny bestilling</h1>
     </div>
-    <div id="orderContainer" class="currentOrderContainer tabcontent">
-
+    <div id="currentOrderContainer" class="currentOrderContainer tabcontent">
       <h3>Bestilling</h3>
       <div class="totalPriceContainer">
           <h4>Totalpris</h4>
@@ -19,19 +18,22 @@
       </div>
       <div class="order"></div>
     </div>
+    <div id="previousOrderContainer" class="tabcontent"></div>
 
     <div class="container">
-        <button type="button" class="tablinks indexButton">Dessert</button>
+        <button id="dessertButton" type="button" class="tablinks indexButton">Dessert</button>
         <div id="dessertContainer" class="tabcontent"></div>
 
-        <button type="button" class="tablinks indexButton">Drikke</button>
+        <button id="beverageButton" type="button" class="tablinks indexButton">Drikke</button>
         <div id="drikkeContainer" class="tabcontent"></div>
+        </div>
 
       <div class="buttonContainer">
       </div>
 
       <div class="bottomNavContainer">
-        <button type="button" class="tablinks bottomNavButton">Din bestilling</button>
+        <button type="button" id="currentOrderButton" class="tablinks bottomNavButton">Din bestilling</button>
+        <button type="button" id="previousOrderButton"class="tablinks bottomNavButton">Tidligere bestillinger</button>
       </div>
     </div>
   </body>

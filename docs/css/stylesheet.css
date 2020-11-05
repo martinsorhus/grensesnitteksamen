@@ -30,7 +30,7 @@ and (min-device-width : 320px){
       -webkit-appearance: textfield;
          -moz-appearance: textfield;
               appearance: textfield;
-      width: 150px;
+      width: 15vw;
       height: 7vh;
       font-size: 2em;
       text-align: center;

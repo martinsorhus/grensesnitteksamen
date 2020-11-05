@@ -1,12 +1,16 @@
 import { beverages, desserts } from './storeObjects.js';
 import { settingUpNewOrderScreen } from './setUpNewOrderScreen.js';
 import { createOrderHistory } from './settingUpPreviousOrdersScreen.js';
+import { deleteOrderHistory } from './settingUpPreviousOrdersScreen.js';
 import { addOrder } from './addToCart.js';
 import { checkout } from './addToCart.js';
 
 const mainPageContainer = document.querySelector(".mainBox");
 const totalPriceLabel = document.querySelector(".sum");
 const checkOutBtn = document.querySelector(".checkOutBtn");
+
+var searchForDigits;
+
 if(mainPageContainer != null) {
 	const tabs = document.getElementsByClassName("tablinks");
 
@@ -50,7 +54,7 @@ if(mainPageContainer != null) {
 		if($("#drikkeContainer").css("display") == "none") {
 			openPage("drikkeContainer");
 			settingUpNewOrderScreen("drinks");
-			document.getElementById("drikkeContainer").scrollIntoView({ behavior: 'auto', block: 'start'});
+			document.getElementById("drikkeContainer").scrollIntoView({ behavior: 'smooth', block: 'start'});
 
 		} else {
 			$("#drikkeContainer").css("display", "none");
@@ -83,11 +87,16 @@ if(mainPageContainer != null) {
 			$('#previousOrderButton').text("Slett historikk");
 
 			createOrderHistory();
-		} else {
+		} else if ($("#currentOrderContainer").css("display") !== "none") {
 			checkout();
 			$(".order").empty();
-			$("#previousOrderContainer").css("display", "none");
-			$('.bottomNavButton').text("Din bestilling");
+			updateTotalValue(0, "clear");
+			$("#currentOrderContainer").css("display", "none");
+			$('#currentOrderButton').text("Din bestilling");
+			$('#previousOrderButton').text("Tidligere bestillinger");
+		} else if ($("#previousOrderContainer").css("display") !== "none") {
+			deleteOrderHistory();
+			$("#orderHistoryContainer").empty();
 		}
 	});
 
@@ -108,10 +117,22 @@ document.body.addEventListener("click", event => {
 		let priceButtonPressed = event.target.textContent;
 		let parentElement = event.target.parentElement.parentElement.id;
 		let typeOfProduct = event.target.value.toString();
-		let searchForDigits = priceButtonPressed.replace(/\D/g, '');
+		searchForDigits = priceButtonPressed.replace(/\D/g, '');
 		addOrder(typeOfProduct, parentElement, searchForDigits);
-		let convertedTotalPrice = Number(totalPriceLabel.innerHTML.replace(/\D/g, ''));
-		convertedTotalPrice += parseInt(searchForDigits);
-		totalPriceLabel.innerHTML = convertedTotalPrice + "kr";
+		updateTotalValue(searchForDigits, "add");
 	}
 })
+
+export function updateTotalValue(number, type) {
+	if(type == "add"){
+		let convertedTotalPrice = Number(totalPriceLabel.innerHTML.replace(/\D/g, ''));
+		convertedTotalPrice += parseInt(number);
+		totalPriceLabel.innerHTML = convertedTotalPrice + "kr";
+	} else if (type == "subtract") {
+		let convertedTotalPrice = Number(totalPriceLabel.innerHTML.replace(/\D/g, ''));
+		convertedTotalPrice -= parseInt(number);
+		totalPriceLabel.innerHTML = convertedTotalPrice + "kr";
+	} else if (type == "clear") {
+		totalPriceLabel.innerHTML = number + "kr";
+	}
+}

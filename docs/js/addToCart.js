@@ -1,4 +1,5 @@
 import { beverages, desserts } from './storeObjects.js';
+import { updateTotalValue } from './createNewOrder.js';
 
 const mainOrderContainer = document.querySelector(".order");
 
@@ -63,6 +64,8 @@ export function addOrder(type, name, price){
           var a = confirm("Fjern produkt?");
           if(a == true){
             event.target.parentNode.parentNode.remove();
+            let searchForDigits = event.target.parentNode.parentNode.textContent.replace(/\D/g, '');
+            updateTotalValue(searchForDigits, "subtract");
           }else {
             event.target.parentNode.querySelector('input[type=number]').value = 1;
           }

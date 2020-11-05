@@ -15,6 +15,7 @@ body{
 and (min-device-width : 320px){
   button{
     min-width: 18vw;
+    min-height: 12vh;
     letter-spacing: 0.1em;
     margin: 25px;
     outline: inherit;
@@ -25,7 +26,7 @@ and (min-device-width : 320px){
     background-color: #4b9387;
     font-family: inherit;
     font-size: 1.5em;
-    padding: 25px;
+    padding: 10px;
   }
   input[type="number"] {
       -webkit-appearance: textfield;
@@ -93,6 +94,8 @@ and (min-device-width : 320px){
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    padding-top: 1vh;
+    padding-bottom: 2vh;
   }
   .orderProductContainer, .productContainer {
       padding: 15px;

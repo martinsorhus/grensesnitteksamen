@@ -92,23 +92,28 @@ if(mainPageContainer != null) {
 
 			createOrderHistory();
 		} else if ($("#currentOrderContainer").css("display") !== "none") {
-			checkout();
-			$(".order").empty();
-			updateTotalValue(0, "clear");
-			updateOrderVolumeCount();
+				var a = confirm("Bekreft bestilling.");
+				if (a == true){
+					checkout();
+					$(".order").empty();
+					updateTotalValue(0, "clear");
+					updateOrderVolumeCount();
 
-			$("#currentOrderContainer").css("display", "none");
-			$(".orderVolumeIcon").css("display", "block");
+					$("#currentOrderContainer").css("display", "none");
+					$(".orderVolumeIcon").css("display", "block");
 
-			$('#currentOrderButton').text("Din bestilling");
-			$('#previousOrderButton').text("Tidligere bestillinger");
+					$('#currentOrderButton').text("Din bestilling");
+					$('#previousOrderButton').text("Tidligere bestillinger");
+			} else {
+				return;
+			}
 		} else if ($("#previousOrderContainer").css("display") !== "none") {
 				var a = confirm("Fjern all historikk?");
 				if (a == true){
-				deleteOrderHistory();
-				$("#orderHistoryContainer").empty();
+					deleteOrderHistory();
+					$("#orderHistoryContainer").empty();
 			} else {
-				return;
+					return;
 			}
 		}
 	});

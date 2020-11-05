@@ -55,7 +55,7 @@ if(mainPageContainer != null) {
 		if($("#drikkeContainer").css("display") == "none") {
 			openPage("drikkeContainer");
 			settingUpNewOrderScreen("drinks");
-			document.getElementById("drikkeContainer").scrollIntoView({ behavior: 'auto', block: 'start'});
+			document.getElementById("drikkeContainer").scrollIntoView({ behavior: 'smooth', block: 'start'});
 
 		} else {
 			$("#drikkeContainer").css("display", "none");

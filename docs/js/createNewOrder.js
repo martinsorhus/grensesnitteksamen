@@ -95,7 +95,8 @@ if(mainPageContainer != null) {
 			checkout();
 			$(".order").empty();
 			updateTotalValue(0, "clear");
-
+			updateOrderVolumeCount();
+			
 			$("#currentOrderContainer").css("display", "none");
 			$(".orderVolumeIcon").css("display", "block");
 

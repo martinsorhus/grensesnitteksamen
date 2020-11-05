@@ -56,12 +56,16 @@ export function addOrder(type, name, price){
     // og bruker stepUp/Down funksjonen til number inputs for å justere menge
     orderAddBtn.addEventListener("click", event => {
         event.target.parentNode.querySelector('input[type=number]').stepUp();
+        let searchForDigits = event.target.parentNode.parentNode.textContent.replace(/\D/g, '');
+        updateTotalValue(searchForDigits, "add");
         updateOrderVolumeCount();
     }, false);
 
     orderSubtractBtn.addEventListener("click", event => {
-      event.target.parentNode.querySelector('input[type=number]').stepDown();
-      updateOrderVolumeCount();
+        event.target.parentNode.querySelector('input[type=number]').stepDown();
+        let searchForDigits = event.target.parentNode.parentNode.textContent.replace(/\D/g, '');
+        updateTotalValue(searchForDigits, "subtract");
+        updateOrderVolumeCount();
 
         //På minus knappen vil vi også sjekke om mengden er nådd null for å så spørre om varen skal slettes.
         if(event.target.parentNode.querySelector('input[type=number]').value == 0){
@@ -69,7 +73,6 @@ export function addOrder(type, name, price){
           if(a == true){
             event.target.parentNode.parentNode.remove();
             let searchForDigits = event.target.parentNode.parentNode.textContent.replace(/\D/g, '');
-            updateTotalValue(searchForDigits, "subtract");
             updateOrderVolumeCount();
           }else {
             event.target.parentNode.querySelector('input[type=number]').value = 1;

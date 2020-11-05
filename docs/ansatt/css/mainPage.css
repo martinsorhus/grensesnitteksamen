@@ -46,6 +46,7 @@ input[type=number]::-webkit-outer-spin-button {
   height: 100vh;
 }
 .productDetailsContainer {
+    max-width: 25vw;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -69,11 +70,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .orderTotal{
   text-align: right;
-}
-.productDetailsContainer {
-  display: flex;
-  justify-content: space-between;
-  min-width: 25vw;
 }
 .addBtn{
     box-shadow: 0px 5px 10px -6px rgba(69,136,125,1);

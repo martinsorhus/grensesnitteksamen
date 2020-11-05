@@ -1,5 +1,6 @@
 import { beverages, desserts } from './storeObjects.js';
 import { updateTotalValue } from './createNewOrder.js';
+import { updateOrderVolumeCount } from './createNewOrder.js';
 
 const mainOrderContainer = document.querySelector(".order");
 
@@ -49,15 +50,22 @@ export function addOrder(type, name, price){
     orderContainer.appendChild(orderPrice);
     orderContainer.appendChild(orderDetailsContainer);
     mainOrderContainer.appendChild(orderContainer)
+    updateOrderVolumeCount();
 
     //Etter et nytt produkt er lagt til, legger vi ved 2 eventlisteners til både subtract og add knappene
     // og bruker stepUp/Down funksjonen til number inputs for å justere menge
     orderAddBtn.addEventListener("click", event => {
         event.target.parentNode.querySelector('input[type=number]').stepUp();
+        let searchForDigits = event.target.parentNode.parentNode.textContent.replace(/\D/g, '');
+        updateTotalValue(searchForDigits, "add");
+        updateOrderVolumeCount();
     }, false);
 
     orderSubtractBtn.addEventListener("click", event => {
-      event.target.parentNode.querySelector('input[type=number]').stepDown();
+        event.target.parentNode.querySelector('input[type=number]').stepDown();
+        let searchForDigits = event.target.parentNode.parentNode.textContent.replace(/\D/g, '');
+        updateTotalValue(searchForDigits, "subtract");
+        updateOrderVolumeCount();
 
         //På minus knappen vil vi også sjekke om mengden er nådd null for å så spørre om varen skal slettes.
         if(event.target.parentNode.querySelector('input[type=number]').value == 0){
@@ -65,9 +73,10 @@ export function addOrder(type, name, price){
           if(a == true){
             event.target.parentNode.parentNode.remove();
             let searchForDigits = event.target.parentNode.parentNode.textContent.replace(/\D/g, '');
-            updateTotalValue(searchForDigits, "subtract");
+            updateOrderVolumeCount();
           }else {
             event.target.parentNode.querySelector('input[type=number]').value = 1;
+            updateOrderVolumeCount();
           }
         }
     }, false);

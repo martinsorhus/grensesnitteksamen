@@ -57,7 +57,6 @@ export function createOrderHistory () {
     mainPageContainer.appendChild(orderHistoryContainer);
     }
   }
-  }
 }
 export function deleteOrderHistory () {
   window.localStorage.removeItem("orderHistory");

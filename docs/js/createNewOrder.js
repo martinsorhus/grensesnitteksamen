@@ -8,6 +8,7 @@ import { checkout } from './addToCart.js';
 const mainPageContainer = document.querySelector(".mainBox");
 const totalPriceLabel = document.querySelector(".sum");
 const checkOutBtn = document.querySelector(".checkOutBtn");
+var orderVolume;
 
 var searchForDigits;
 
@@ -54,7 +55,7 @@ if(mainPageContainer != null) {
 		if($("#drikkeContainer").css("display") == "none") {
 			openPage("drikkeContainer");
 			settingUpNewOrderScreen("drinks");
-			document.getElementById("drikkeContainer").scrollIntoView({ behavior: 'smooth', block: 'start'});
+			document.getElementById("drikkeContainer").scrollIntoView({ behavior: 'auto', block: 'start'});
 
 		} else {
 			$("#drikkeContainer").css("display", "none");
@@ -65,15 +66,16 @@ if(mainPageContainer != null) {
 	$(r).click(function() {
 		if($("#currentOrderContainer").css("display") == "none" & $("#previousOrderContainer").css("display") == "none") {
 			openPage("currentOrderContainer");
+			$(".orderVolumeIcon").css("display", "none");
 
 			$('#currentOrderButton').text("Tilbake");
-
 			$('#previousOrderButton').text("Checkout");
 			$('#previousOrderButton').addClass("checkOutBtn");
 		} else {
 			$('#currentOrderButton').text("Din bestilling");
 			$('#previousOrderButton').text("Tidligere bestillinger");
 
+			$(".orderVolumeIcon").css("display", "block");
 			$("#currentOrderContainer").css("display", "none");
 			$("#previousOrderContainer").css("display", "none");
 		}
@@ -83,6 +85,8 @@ if(mainPageContainer != null) {
 	$(r).click(function() {
 		if($("#previousOrderContainer").css("display") == "none" & $("#currentOrderContainer").css("display") == "none") {
 			openPage("previousOrderContainer");
+			$(".orderVolumeIcon").css("display", "none");
+
 			$('#currentOrderButton').text("Tilbake");
 			$('#previousOrderButton').text("Slett historikk");
 
@@ -91,7 +95,10 @@ if(mainPageContainer != null) {
 			checkout();
 			$(".order").empty();
 			updateTotalValue(0, "clear");
+
 			$("#currentOrderContainer").css("display", "none");
+			$(".orderVolumeIcon").css("display", "block");
+
 			$('#currentOrderButton').text("Din bestilling");
 			$('#previousOrderButton').text("Tidligere bestillinger");
 		} else if ($("#previousOrderContainer").css("display") !== "none") {
@@ -129,10 +136,16 @@ export function updateTotalValue(number, type) {
 		convertedTotalPrice += parseInt(number);
 		totalPriceLabel.innerHTML = convertedTotalPrice + "kr";
 	} else if (type == "subtract") {
+
 		let convertedTotalPrice = Number(totalPriceLabel.innerHTML.replace(/\D/g, ''));
 		convertedTotalPrice -= parseInt(number);
 		totalPriceLabel.innerHTML = convertedTotalPrice + "kr";
 	} else if (type == "clear") {
 		totalPriceLabel.innerHTML = number + "kr";
 	}
+}
+
+export function updateOrderVolumeCount () {
+	orderVolume = $(".order > div").length;
+	$("#orderVolumeCount").text(orderVolume);
 }
